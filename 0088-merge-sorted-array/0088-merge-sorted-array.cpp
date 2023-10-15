@@ -1,4 +1,4 @@
-//TC: O(N)
+//TC: O(N + M)
 //SC: O(1)
 class Solution {
 public:
