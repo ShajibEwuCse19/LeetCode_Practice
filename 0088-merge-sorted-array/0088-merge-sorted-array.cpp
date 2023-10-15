@@ -6,7 +6,7 @@ public:
         int L1 = 0, L2 = 0;
         while(L1 < m or L2 < n)
         {
-            if(L1 < m and L2 < n)
+            if(L1<m and L2<n)
             {
                 if(nums1[L1] <= nums2[L2])
                 {
@@ -19,19 +19,15 @@ public:
                     L2++;
                 }
             }
+            else if(L1 < m)
+            {
+                sortList.push_back(nums1[L1]);
+                L1++;
+            }
             else
             {
-                while(L1 < m)
-                {
-                    sortList.push_back(nums1[L1]);
-                    L1++;
-                }
-
-                while(L2 < n)
-                {
-                    sortList.push_back(nums2[L2]);
-                    L2++;
-                }
+                sortList.push_back(nums2[L2]);
+                L2++;
             }
         }
 
