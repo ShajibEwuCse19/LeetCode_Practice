@@ -5,24 +5,23 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         int profit = 0;
-        int MimPrice = prices[0];
-        int R = 1;
+        int NextMaxPrice = 1, MinPrice = 0, len = prices.size();
 
-        for(int i=0; i<prices.size() and R<prices.size(); )
+        while(NextMaxPrice<len)
         {
-            
-            while(prices[R] >= prices[R-1])
+            if(prices[NextMaxPrice] >= prices[NextMaxPrice-1])
             {
-                R++;
-                if(R == prices.size()) break;
+                NextMaxPrice++;
+                continue;
             }
             
+            profit += max(0 , prices[NextMaxPrice-1] - prices[MinPrice]);
 
-            profit += max(0 , prices[R-1] - prices[i]);
-
-            i = R;
-            R++;
+            MinPrice = NextMaxPrice;
+            NextMaxPrice++;
         }
+
+        if(NextMaxPrice == len) profit += max(0 , prices[NextMaxPrice-1] - prices[MinPrice]);
 
         return profit;
     }
