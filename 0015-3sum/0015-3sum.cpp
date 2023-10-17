@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        set<vector<int>>result;
+        vector<vector<int>>result;
 
         for(int i=0; i<nums.size(); i++)
         {
@@ -13,44 +13,27 @@ public:
             int find = -a;
             while(Left < Right)
             {
-                int sum = nums[Left] + nums[Right];
+                int b = nums[Left];
+                int c = nums[Right];
+                int sum = b + c;
+
                 if(sum < find)Left++;
                 else if(sum > find)Right--;
                 else 
                 {
-                    result.insert({a, nums[Left], nums[Right]});
-                    Left++;
+                    while(Left + 1 < Right and nums[Left + 1] == b)Left++; ///remove duplicate
+                    while(Right - 1 > Left and nums[Right - 1] == c)Right--;///remove duplicate
+
+                    result.push_back({a, b, c});
                     Right--;
+                    Left++;
                 }
-
-                // if(Left+1 < nums.size())
-                // {
-                //     while(nums[Left] == nums[Left+1])
-                //     {
-                //         Left++;
-                //     }
-                    
-                // }
-
-                // if(Right-1 > 0)
-                // {
-                //     while(nums[Right] == nums[Right-1])
-                //     {
-                //         Right--;
-                //     }
-                // }
             }
 
-        //    if(i+1 < nums.size())
-        //    {
-        //        while(nums[i] == nums[i+1])
-        //        {
-        //            i++;
-        //        }
-        //    }
+          while(i + 1 < nums.size() and nums[i] == nums[i+1])i++;///remove duplicate
 
         }
 
-        return vector<vector<int>>(result.begin(), result.end());
+        return result;
     }
 };
