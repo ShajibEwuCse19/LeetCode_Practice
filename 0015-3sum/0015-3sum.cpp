@@ -23,8 +23,8 @@ public:
                 else if(sum > find)Right--;
                 else 
                 {
-                    while(Left + 1 < Right and nums[Left + 1] == nums[Left])Left++; ///remove duplicate
-                    while(Right - 1 > Left and nums[Right - 1] == nums[Right])Right--;///remove duplicate
+                    while(Left + 1 < Right and nums[Left + 1] == b)Left++; ///remove duplicate
+                    while(Right - 1 > Left and nums[Right - 1] == c)Right--;///remove duplicate
 
                     result.push_back({a, b, c});
                     Right--;
