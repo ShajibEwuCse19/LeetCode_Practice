@@ -1,4 +1,4 @@
-mt19937 rng(0);
+///mt19937 rng(0);
 class Solution {
 
 private:
@@ -19,8 +19,8 @@ private:
 
     void partial_sort(vector<int>&nums, int k)
     {
-        //random_shuffle(nums.begin(), nums.end());
-        shuffle(nums.begin(), nums.end(), rng);
+        random_shuffle(nums.begin(), nums.end());
+        ///shuffle(nums.begin(), nums.end(), rng);
 
         int L = 0, R = nums.size() - 1;
         int MaxIteration = 2*log2(nums.size()); ///Threshold
